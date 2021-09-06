@@ -1,0 +1,77 @@
+﻿@model IEnumerable<BTZTransports.Models.Veiculo>
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Lista de Veiculos</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-controller="Veiculo" asp-action="Create" class="btn btn-primary">
+                Adicionar Novo Veículo
+            </a>
+        </div>
+    </div>
+
+    <br /><br />
+
+    @if (Model.Count() > 0 && Model != null)
+    {
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>
+                        Placa
+                    </th>
+                    <th>
+                        Nome do Veículo
+                    </th>
+                    <th>
+                        Tipo de Combustível
+                    </th>
+                    <th>
+                        Fabricante
+                    </th>
+                    <th>
+                        Ano de Fabricação
+                    </th>
+                    <th>
+                        Capacidade Máxima do Tanque
+                    </th>
+                    <th>
+                        Observação
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var obj in Model)
+                {
+                <tr>
+                    <td width="50%">@obj.Placa</td>
+                    <td width="30%">@obj.NomeVeiculo</td>
+                    <td width="30%">@obj.TipoCombustivel</td>
+                    <td width="30%">@obj.Fabricante</td>
+                    <td width="30%">@obj.AnoFabricacao</td>
+                    <td width="30%">@obj.CapacidadeMaximaTanque</td>
+                    <td width="30%">@obj.Observacao</td>
+                    <td class="text-center">
+                        <div class="w-75 btn-group" role="group">
+                            <a asp-controller="Veiculo" asp-route-Id="@obj.Id" asp-action="Edit" class="btn btn-primary mx-2">
+                                Editar
+                            </a>
+                            <a asp-controller="Veiculo" asp-route-Id="@obj.Id" asp-action="Delete" class="btn btn-danger mx-2">
+                                Deletar
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>Não há Veículos para exibir.</p>
+    }
+
+</div>

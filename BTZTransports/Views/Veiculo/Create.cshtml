@@ -1,0 +1,111 @@
+﻿@model BTZTransports.Models.Veiculo
+
+<form method="post" asp-action="Create">
+
+    <div class="border p-3">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group row">
+            <h2 class="text-info pl-3"> Adicionar Veiculo</h2>
+        </div>
+        <div class="row">
+            <div class="col-8">
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Placa">Placa</label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Placa" class="form-control" />
+                        <span asp-validation-for="Placa" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="NomeVeiculo">Nome do Veículo</label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="NomeVeiculo" class="form-control" />
+                        <span asp-validation-for="NomeVeiculo" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <label asp-for="TipoCombustivel">Combustível</label>
+                        </div>
+                        <div class="col-8">
+                            @Html.DropDownListFor(model =>
+                            model.TipoCombustivel, new SelectList(
+                                ViewBag.TipoCombustivel, "Id", "Nome"), "Selecione um Combustível")
+                        </div>
+                        <span asp-validation-for="IdCombustivel" class="text-danger"></span>
+
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Fabricante">Fabricante</label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Fabricante" class="form-control" />
+                        <span asp-validation-for="Fabricante" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="AnoFabricacao">Ano de Fabricacao</label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="AnoFabricacao" class="form-control" />
+                        <span asp-validation-for="AnoFabricacao" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="CapacidadeMaximaTanque">Capacidade Máxima do Tanque</label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="CapacidadeMaximaTanque" class="form-control" />
+                        <span asp-validation-for="CapacidadeMaximaTanque" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Observacao">Observação</label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Observacao" class="form-control" />
+                        <span asp-validation-for="Observacao" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-8 offset-4 row">
+
+                        <div class="col">
+                            <input type="submit" class="btn btn-info w-100" value="Adicionar" />
+                        </div>
+                        <div class="col">
+                            <a asp-action="Index" class="btn btn-success w-100">Voltar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                @*Keep this empty*@
+            </div>
+        </div>
+    </div>
+
+</form>
+
+@section Scripts {
+
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+
+} 
